@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\maybe\" />
+    <Folder Include="wwwroot\ımages\" />
   </ItemGroup>
 
 </Project>

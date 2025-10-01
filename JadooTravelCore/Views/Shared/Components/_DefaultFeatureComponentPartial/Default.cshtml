@@ -1,0 +1,54 @@
+﻿@model List<ResultFeatureDto>
+@*
+   Feature Component Partial
+*@
+
+<section style="padding-top: 7rem;">
+    <div class="bg-holder" style="background-image:url(~/public/assets/img/hero/hero-bg.svg);">
+    </div>
+    <!--/.bg-holder-->
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 text-end">
+                <img class="pt-7 pt-md-0 hero-img" src="~/public/assets/img/hero/hero-img.png" alt="hero-header" />
+            </div>
+            <div class="col-md-7 col-lg-6 text-md-start text-center py-6">
+                @foreach (var item in Model)
+                {
+                    <h4 id="feature-title" class="fw-bold text-danger mb-3" data-i18n="FeatureTitle">@item.Title</h4>
+                    <h1 id="feature-main-title" class="hero-title" data-i18n="FeatureMainTitle">@item.MainTitle</h1>
+                    <p id="feature-description" class="mb-4 fw-medium" data-i18n="FeatureDescription">
+                        @item.Description<br class="d-none d-xl-block" /><br class="d-none d-xl-block" />
+                    </p>
+                }
+
+                <div class="text-center text-md-start">
+                    <a id="feature-more-btn" class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow"
+                       href="#booking" role="button" data-i18n="FeatureMoreButton">Daha Fazlası İçin...</a>
+                    <div class="w-100 d-block d-md-none"></div>
+                    <a style="border:1px solid red;border-radius:60px;background-color:orangered;padding:20px;" id="feature-video-btn" href="#!" role="button" data-bs-toggle="modal" data-bs-target="#popupVideo" data-i18n="FeatureVideoButton">
+                        <span class="btn btn-danger round-btn-lg rounded-circle me-3 danger-btn-shadow">
+                            <img src="~/public/assets/img/hero/play.svg" width="15" alt="play" />
+                            <span style="font-weight:bold;color:aliceblue" id="feature-video-text" class="fw-medium" data-i18n="FeatureVideoText">Oynat</span>
+                        </span>
+                    </a>
+
+                    
+
+                    <div class="modal fade" id="popupVideo" tabindex="-1" aria-labelledby="popupVideo" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <iframe id="feature-video-iframe" class="rounded" style="width:100%;max-height:500px;" height="500px"
+                                        src="~/myvideosfolder/jadoo.mp4" title="YouTube video player"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen="allowfullscreen">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

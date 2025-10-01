@@ -1,0 +1,161 @@
+﻿
+@*
+   admin layout sidebar component
+*@
+<aside  style="margin-top:-60px;" class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="#" class="text-nowrap logo-img">
+                <img src="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/logo.svg" alt="" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap">
+                    <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+                    <span class="hide-menu">Kategoriler</span>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between"
+                       href="/Staticks/Index" aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:screencast-2-line-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">İstatiskler</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between has-arrow" href="/Supporter/SupporterList"
+                       aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:widget-4-line-duotone"></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Sponsorlarımız</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill me-4">Özel</span>
+                    </a>
+                  
+                </li>
+              
+                
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between" 
+                       href="/User/UserList"
+                       aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:shield-user-line-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Adminler</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between" 
+                       href="/ReceiverMessage/MessageList" aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:letter-line-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Gelen Mesajlar</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between" 
+                       href="/Feature/FeatureList" aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:document-text-line-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Öne Çıkanlar Kısmı</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between" 
+                       href="/Service/ServiceList" aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:phone-line-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Hizmetlerimiz</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between" 
+                       href="/Destination/DestinationList" aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:gallery-bold-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Turlarımız</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link primary-hover-bg justify-content-between" 
+                       href="/Testimonial/TestimonialList" aria-expanded="false">
+                        <div class="d-flex align-items-center gap-6">
+                            <span class="d-flex">
+                                <iconify-icon icon="solar:mask-happly-line-duotone" class=""></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Yorumlarımız</span>
+                        </div>
+                        <span class="hide-menu badge text-bg-primary fs-1 py-1 px-2 rounded-pill">Özel</span>
+                    </a>
+                </li>
+
+
+             </ul>
+            <div class="unlimited-access d-flex align-items-center hide-menu bg-secondary-subtle position-relative mb-7 mt-4 p-3 rounded-3">
+                <div class="flex-shrink-0">
+                    <h6 class="fw-semibold fs-4 mb-6 text-dark w-75 lh-sm">Çıkış Yap</h6>
+                    <a href="/Auth/Logout" 
+                       class="btn btn-secondary fs-2 fw-semibold lh-sm">Çık</a>
+                </div>
+                <div class="unlimited-access-img">
+                    <img src="~/Spike-Bootstrap-1.0.0/src/assets/images/backgrounds/sidebar-buynow-bg.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

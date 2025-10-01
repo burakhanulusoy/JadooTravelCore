@@ -1,0 +1,62 @@
+﻿@model List<ResultCategoryDto>
+
+
+@{
+    Layout = null;
+    int count = 0;
+}
+
+<div class="container">
+    <br />
+    <br />
+    <table class="table table-bordered table-hover">
+
+        <tr>
+
+            <th>#</th>
+            <th>Kategori Adı</th>
+            <th>Açıklama</th>
+            <th>Kategori Icon Url'i</th>
+            <th>Kategori Aktiflik</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+
+        </tr>
+
+        @foreach(var item in Model)
+        {
+            count++;
+            <tr>
+
+                <th>@count</th>
+                <th>@item.CategoryName</th>
+                <th>@item.Description</th>
+                <th>@item.IconUrl</th>
+                @if(item.Status==true)
+                {
+                    <th>Aktif</th>
+                }else
+                {
+                    <th>Aktif Değil</th>
+                }
+                <th> <a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a>  </th>
+                <th> <a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-primary">Güncelle</a>  </th>
+
+
+            </tr>
+        }
+
+
+
+
+    </table>
+
+    <a href="/Category/CreateCategory" class="btn btn-success">Yeni Kategori Ekle</a>
+
+
+</div>
+
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />

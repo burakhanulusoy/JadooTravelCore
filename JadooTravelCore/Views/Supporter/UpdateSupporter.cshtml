@@ -1,0 +1,67 @@
+﻿@model GetByIdSupporterDto
+@{
+    ViewData["Title"] = "UpdateSupporter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1> Sponsor Güncelleme Paneli</h1>
+
+<div class="container">
+
+    <form method="post" id="testimonialForm">
+
+        <input asp-for="SupporterId"  type="hidden"  />
+
+
+        <label>Sponsor Adı</label>
+        <input asp-for="SupporterName" class="form-control" required type="text" placeholder="Sponsor Adı" />
+        <br />
+        <label>Sponsor Resim Url'i</label>
+        <input asp-for="SupporterImg" class="form-control" required type="url" placeholder="Sponsor Resim Url'i" />
+        <br />
+
+
+        <button class="btn btn-success" type="button" id="btnSave">Kaydet</button>
+
+
+    </form>
+
+
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Güncellemek istediğinize emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Güncelle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>
+
+
+

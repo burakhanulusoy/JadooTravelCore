@@ -1,0 +1,301 @@
+﻿@using JadooTravelCore.Entities
+@model List<ResultDestinationDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-8 d-flex align-items-strech">
+        <div class="card w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                    <div class="">
+                        <h5 class="card-title fw-semibold">Turlarımız Değerleri Ve Kapasiteleri</h5>
+                    </div>
+                    <div class="dropdown">
+                        <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none">
+                            <i class="ti ti-dots-vertical fs-7 d-block"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Grafik -->
+                <div id="profitt"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+           
+            <div class="col-lg-12 col-sm-6">
+                <!-- Monthly Earnings -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row alig n-items-start">
+                            <div class="col-8">
+                                <h5 class="card-title mb-10 fw-semibold">Turlarımızın Toplam Getirisi</h5>
+                                <h4 class="fw-semibold mb-3">$@ViewBag.TotalPrice</h4>
+                                <div class="d-flex align-items-center pb-1">
+                                    <span class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-arrow-down-right text-danger"></i>
+                                    </span>
+                                    <p class="text-dark me-1 fs-3 mb-0">+9%</p>
+                                    <p class="fs-3 mb-0">geçen seneye göre</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="d-flex justify-content-end">
+                                    <div class="text-white bg-danger rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-currency-dollar fs-6"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="earning"></div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-6">
+                <!-- Monthly Earnings -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row alig n-items-start">
+                            <div class="col-8">
+                                <h5 class="card-title mb-10 fw-semibold">Turlarımızın Ortalama Fiyatı</h5>
+                                <h4 class="fw-semibold mb-3">@ViewBag.AvaragePrice</h4>
+                                <div class="d-flex align-items-center pb-1">
+                                    <span class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-arrow-down-right text-danger"></i>
+                                    </span>
+                                    <p class="text-dark me-1 fs-3 mb-0">+8%</p>
+                                    <p class="fs-3 mb-0">geçen seneye göre</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="d-flex justify-content-end">
+                                    <div class="text-white bg-danger rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-currency-dollar fs-6"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="earning"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="mb-4">
+                    <h5 class="card-title fw-semibold">Bazı İstatistikler</h5>
+                </div>
+                <ul class="timeline-widget mb-0 position-relative mb-n5">
+                    <li class="timeline-item d-flex position-relative overflow-hidden">
+                        <div class="timeline-time text-dark flex-shrink-0 text-end">Okuanan Mesaj Sayısı</div>
+                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                            <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-2"></span>
+                            <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                        </div>
+                        <div class="timeline-desc fs-3 text-dark mt-n1">@ViewBag.CountReadMessage</div>
+                    </li>
+                    <li class="timeline-item d-flex position-relative overflow-hidden">
+                        <div class="timeline-time text-dark flex-shrink-0 text-end">Okunmayan Mesaj Sayısı</div>
+                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                            <span class="timeline-badge border-2 border border-info flex-shrink-0 my-2"></span>
+                            <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                        </div>
+                        <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">
+                            @ViewBag.CountDontReadMessage <a href="/ReceiverMessage/MessageList" class="text-primary d-block fw-normal">Bak</a>
+                        </div>
+                    </li>
+                    <li class="timeline-item d-flex position-relative overflow-hidden">
+                        <div class="timeline-time text-dark flex-shrink-0 text-end">Toplam Admin Sayısı</div>
+                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                            <span class="timeline-badge border-2 border border-success flex-shrink-0 my-2"></span>
+                            <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                        </div>
+                        <div class="timeline-desc fs-3 text-dark mt-n1">@ViewBag.AdminCount</div>
+                    </li>
+                    <li class="timeline-item d-flex position-relative overflow-hidden">
+                        <div class="timeline-time text-dark flex-shrink-0 text-end">En Pahalı Tur</div>
+                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                            <span class="timeline-badge border-2 border border-warning flex-shrink-0 my-2"></span>
+                            <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                        </div>
+                        <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">
+                            $@ViewBag.maxPrice | @ViewBag.maxCity / @ViewBag.maxCountry <a href="#" class="text-primary d-block fw-normal"></a>
+                        </div>
+                    </li>
+                    <li class="timeline-item d-flex position-relative overflow-hidden">
+                        <div class="timeline-time text-dark flex-shrink-0 text-end">En Ucuz Tur</div>
+                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                            <span class="timeline-badge border-2 border border-danger flex-shrink-0 my-2"></span>
+                            <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                        </div>
+                        <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">
+                            $@ViewBag.minPrice | @ViewBag.minCity / @ViewBag.mincountry
+                        </div>
+                    </li>
+                    <li class="timeline-item d-flex position-relative overflow-hidden">
+                        <div class="timeline-time text-dark flex-shrink-0 text-end">Yorum Sayımız</div>
+                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                            <span class="timeline-badge border-2 border border-success flex-shrink-0 my-2"></span>
+                        </div>
+                        <div class="timeline-desc fs-3 text-dark mt-n1">@ViewBag.testimonialCount</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="d-flex mb-4 justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold">Son Eklenen Adminler</h5>
+
+                    <div class="dropdown">
+                        <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none">
+                            <i class="ti ti-dots-vertical fs-7 d-block"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another action</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="table-responsive" data-simplebar>
+                    <table class="table table-borderless align-middle text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col">Profil</th>
+                                <th scope="col">Telefon Numarası</th>
+                                <th scope="col">Mail</th>
+                                <th scope="col">Görevi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.lastAddUserList)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-4">
+                                                <img src="@item.ImgUrl" width="50" class="rounded-circle"
+                                                     alt="" />
+                                            </div>
+
+                                            <div>
+                                                <h6 class="mb-1 fw-bolder">@item.UserName</h6>
+                                                <p class="fs-3 mb-0">@item.City</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="fs-3 fw-normal mb-0">@item.Phone</p>
+                                    </td>
+                                    <td>
+                                        <p style="color:darkviolet;" class="fs-3 fw-normal mb-0 text-success">
+                                            @item.Email
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light-success rounded-pill text-success px-3 py-2 fs-3">@item.Mission</span>
+                                    </td>
+                                </tr>
+                            }
+
+                         
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in ViewBag.lastestDestination)
+    {
+        
+        <div class="col-sm-6 col-xl-3">
+            <div class="card overflow-hidden">
+                <div class="position-relative">
+                    <a href="javascript:void(0)">
+                        <img src="@item.ImgUrl"
+                             class="card-img-top rounded-0" alt="~/Spike-Bootstrap-1.0.0/src.">
+                    </a>
+                    <a href="/InfoDestination/Index/@item.DestinationId"
+                       class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
+                       data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart">
+                        <i class="ti ti-basket fs-4"></i>
+                    </a>
+                </div>
+                <div class="card-body pt-3 p-4">
+                    <h6 class="fw-semibold fs-4">@item.City/@item.Country</h6>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="fw-semibold fs-4 mb-0">
+                            @item.Price | @item.Capacity
+                        </h6>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    var chartData = @Html.Raw(ViewBag.ChartData);
+
+    var options = {
+        series: [
+            {
+                name: "Fiyat",
+                data: chartData.prices
+            },
+            {
+                name: "Kapasite",
+                data: chartData.capacities
+            }
+        ],
+        chart: {
+            type: 'bar',
+            height: 300
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '50%',
+                endingShape: 'rounded'
+            }
+        },
+        dataLabels: {
+            enabled: true
+        },
+        xaxis: {
+            categories: chartData.names
+        },
+        colors: ['#008FFB', '#FF4560']
+    };
+
+    var chart = new ApexCharts(document.querySelector("#profitt"), options);
+    chart.render();
+</script>

@@ -1,0 +1,69 @@
+﻿@model List<ResultTestimonialDto>
+@{
+    ViewData["Title"] = "TestimonialList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- SweetAlert CDN -->
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-danger').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault(); // normal linkin çalışmasını durdur
+                    const url = this.href;
+
+                    Swal.fire({
+                        title: 'Silmek istediğinize emin misiniz?',
+                        text: "Bu işlemi geri alamazsınız!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Evet, sil!',
+                        cancelButtonText: 'Hayır'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <a class="btn btn-success" href="/Testimonial/CreateTestimonial">Yeni Yorum Ekle</a>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4" style="margin-top:25px;">
+            <div class="card overflow-hidden hover-img">
+                <div class="position-relative">
+                    <a href="javascript:void(0)">
+                        <img src="@item.ImgUrl" class="card-img-top" alt="spike-img">
+                    </a>
+                </div>
+                <div class="card-body p-4">
+                    <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">@item.NameSurname</span>
+                    <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="javascript:void(0)">
+                        @item.Message
+                    </a>
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <a class="btn btn-danger" href="/Testimonial/DeleteTestimonial/@item.TestimonialId">Sil</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <a class="btn btn-primary" href="/Testimonial/UpdateTestimonial/@item.TestimonialId">Güncelle</a>
+                        </div>
+                        <div class="d-flex align-items-center fs-2 ms-auto">
+                            <i class="ti ti-point text-dark"></i>@item.Job
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

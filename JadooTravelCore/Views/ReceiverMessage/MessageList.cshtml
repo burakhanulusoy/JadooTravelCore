@@ -1,0 +1,116 @@
+﻿@model List<ResultReceiverMessageDto>
+@{
+    ViewData["Title"] = "MessageList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mb-4">📩 Gelen Mesajlar</h1>
+
+<div class="tab-content">
+    <div id="note-full-container" class="note-has-grid row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 single-note-item all-category">
+                <div class="card card-body shadow-sm border rounded-3">
+                    <span class="side-stick"></span>
+                    <h6 class="note-title text-truncate w-75 mb-0 fw-bold" data-noteheading="Book a Ticket for Movie">
+                        @item.NameSurname
+                    </h6>
+                    <p class="note-date text-muted small">@item.ReceiverDate</p>
+
+                    <div class="note-content">
+                        <p style="color:blue" class="note-inner-content fw-semibold">
+                            @item.PhoneNumber | @item.Email
+                        </p>
+
+                        @if (item.Status == true)
+                        {
+                            <span class="badge bg-success px-3 py-2">✔ Okundu</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger px-3 py-2">❌ Okunmadı</span>
+                        }
+                    </div>
+
+                    <hr />
+
+                    <div class="d-flex align-items-center">
+                        <!-- Okundu yap (yıldız) -->
+                        <a href="/ReceiverMessage/ReadMessage/@item.ReceiverMessageId" class="link me-2 mark-read">
+                            <i class="ti ti-star fs-4 text-warning"></i>
+                        </a>
+
+                        <!-- Silme -->
+                        <a href="/ReceiverMessage/DeleteMessage/@item.ReceiverMessageId" class="link text-danger ms-2 delete-message">
+                            <i class="ti ti-trash fs-4"></i>
+                        </a>
+
+                        <div class="ms-auto">
+                            <div class="category-selector btn-group">
+                                <a class="nav-link category-dropdown label-group p-0" data-bs-toggle="dropdown" href="javascript:void(0)">
+                                    <span class="more-options text-dark">
+                                        <i class="ti ti-dots-vertical fs-5"></i>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right category-menu">
+                                    <a class="dropdown-item" href="/ReceiverMessage/DeatilMessage/@item.ReceiverMessageId">
+                                        📖 Oku
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // ⭐ Mesajı okundu yap
+        document.querySelectorAll('.mark-read').forEach(star => {
+            star.addEventListener('click', function (e) {
+                e.preventDefault();
+                const url = this.getAttribute('href');
+
+                Swal.fire({
+                    title: 'Mesajı okundu olarak işaretlemek istiyor musunuz?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Evet',
+                    cancelButtonText: 'Hayır'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+
+        // 🗑 Mesaj silme
+        document.querySelectorAll('.delete-message').forEach(del => {
+            del.addEventListener('click', function (e) {
+                e.preventDefault();
+                const url = this.getAttribute('href');
+
+                Swal.fire({
+                    title: 'Silmek istediğinize emin misiniz?',
+                    text: "Bu işlem geri alınamaz!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Evet, Sil',
+                    cancelButtonText: 'Vazgeç'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+    </script>
+}

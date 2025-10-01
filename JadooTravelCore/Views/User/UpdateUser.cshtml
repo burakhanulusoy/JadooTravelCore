@@ -1,0 +1,94 @@
+﻿@model GetByIdUserDto
+
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kullanıcı Güncelle</h1>
+<div class="container">
+
+    <form method="post" id="testimonialForm">
+        <input class="form-control" asp-for="UserId" required type="hidden" />
+
+        <br />
+        <input class="form-control" asp-for="UserName" required type="text" placeholder="Kullanıcı Adı" />
+        <br />
+
+        <!-- Şifre alanı -->
+        <div class="input-group">
+            <input class="form-control password-masked" asp-for="UserPassword" required type="text" placeholder="Kullanıcı Şifresi" id="passwordInput" />
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                Göster
+            </button>
+        </div>
+
+        <br />
+        <input class="form-control" asp-for="Email" required type="email" placeholder="Kullanıcı Email-i" />
+        <br />
+        <input class="form-control" asp-for="Phone" required type="tel" placeholder="Kullanıcı Telefon Numarası" />
+        <br />
+        <input class="form-control" asp-for="ImgUrl" required type="url" placeholder="Kullanıcı Fotosu" />
+        <br />
+        <input class="form-control" asp-for="Mission" required type="text" placeholder="Kullanıcı Görevi" />
+        <br />
+        <input class="form-control" asp-for="City" required type="text" placeholder="Kullanıcı Şehri" />
+
+        <br /><br /><br />
+        <button id="btnSave" type="button" class="btn btn-success">Güncelle</button>
+    </form>
+</div>
+
+<style>
+    .password-masked {
+        -webkit-text-security: disc; /* Chrome/Safari */
+        text-security: disc; /* Standart */
+    }
+</style>
+
+<script>
+    const passwordInput = document.getElementById("passwordInput");
+    const togglePassword = document.getElementById("togglePassword");
+
+    togglePassword.addEventListener("click", () => {
+        if (passwordInput.classList.contains("password-masked")) {
+            passwordInput.classList.remove("password-masked");
+            togglePassword.textContent = "Gizle";
+        } else {
+            passwordInput.classList.add("password-masked");
+            togglePassword.textContent = "Göster";
+        }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Güncellemek istediğinize emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Güncelle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>

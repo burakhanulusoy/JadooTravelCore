@@ -1,0 +1,76 @@
+﻿@model GetFeatureByIdDto
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <form method="post" id="testimonialForm">
+
+        <input asp-for="FeatureId"  type="hidden" />
+
+
+        <label>Başlık</label>
+        <input asp-for="Title" class="form-control" required placeholder="Başlık Yazınız" type="text" />
+        <br />
+        <label>Ana Yazı</label>
+        <input asp-for="MainTitle" class="form-control" required placeholder="Ana Yazı" type="text" />
+        <br />
+        <label>Alt Açıklama</label>
+        <input asp-for="Description" class="form-control" required placeholder="Alt Açıklama" type="text" />
+        <br />
+        <label>Youtube Link</label>
+        <input asp-for="VideoUrl" class="form-control" required placeholder="Youtube Link" type="url" />
+        <br />
+        <br />
+
+        <button class="btn btn-info" id="btnSave" type="button">Güncelle</button>
+
+
+    </form>
+
+
+
+
+
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Güncellemek istediğinize emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Güncelle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>
+
+
+

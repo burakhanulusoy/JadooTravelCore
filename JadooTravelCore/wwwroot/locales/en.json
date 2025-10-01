@@ -1,0 +1,116 @@
+{
+  "services": "Our Services",
+  "locations": "Locations",
+  "testimonials": "Testimonials",
+  "more_info": "More Info",
+  "login": "Login",
+  "get_info": "Get Info",
+  "language": "EN",
+
+
+  "FeatureTitle": "Travel, explore, add value to your life.",
+  "FeatureMainTitle": "Discover a world beyond your dreams.",
+  "FeatureDescription": "With our expert team and experienced guides, we are with you every step. We are here to make your trip unforgettable.",
+  "FeatureMoreButton": "Learn More...",
+  "FeatureVideoButton": "Play",
+  "FeatureVideoText": "Watch Video",
+
+
+
+  "CategoryTitle": "Our Services",
+  "CategorySubtitle": "We Offer the Best Services",
+  "ServiceTitle_1": "Accommodation",
+  "ServiceDesc_1": "Comfortable and centrally located accommodations in our partner hotels.",
+  "ServiceTitle_2": "Tour Guide",
+  "ServiceDesc_2": "Enrich your cultural and historical explorations with our experienced guides.",
+  "ServiceTitle_3": "Private Tours",
+  "ServiceDesc_3": "Easy online and phone reservations and 24/7 support.",
+  "ServiceTitle_4": "Transfer & Transportation",
+  "ServiceDesc_4": "We prioritize your comfort at every stage of your trip.",
+
+
+
+  "Destination_Subtitle": "Most Preferred",
+  "Destination_Title": "Our Popular Routes",
+
+  "Destination_Name1": "Paris, France",
+  "Destination_Day1": "14 Days 15 Nights",
+
+  "Destination_Name2": "Rome, Italy",
+  "Destination_Day2": "9 Days 10 Nights",
+
+  "Destination_Name3": "Tokyo, Japan",
+  "Destination_Day3": "15 Days 15 Nights",
+
+  "Destination_Name4": "Barcelona, Spain",
+  "Destination_Day4": "10 Days 11 Nights",
+
+  "Destination_Name5": "Bangkok, Thailand",
+  "Destination_Day5": "14 Days 15 Nights",
+
+  "Destination_Name6": "London, England",
+  "Destination_Day6": "9 Days 10 Nights",
+
+  "Destination_Name7": "Seoul, South Korea",
+  "Destination_Day7": "10 Days 11 Nights",
+
+  "Destination_Name8": "Mecca, Saudi Arabia",
+  "Destination_Day8": "29 Days 30 Nights",
+
+  "hızlı": "Fast and Reliable",
+
+  "booking.title": "Book your next trip in 3 easy steps.",
+  "booking.step1.title": "Choose Your Travel Country",
+  "booking.step1.desc": "Pick your favorite place, wherever it is in the world.",
+  "booking.step2.title": "Make Payment",
+  "booking.step2.desc": "Once you find your perfect spot, pay and get ready for your journey.",
+  "booking.step3.title": "Arrive at the Airport on Selected Date",
+  "booking.step3.desc": "Discover, explore, and enjoy life wherever you want.",
+
+  "form.title": "💼 Get Your Personalized Offer",
+  "form.subtitle": "You’re one step away from your dream journey! Share your contact details and travel preferences, and we’ll bring you the best offers.",
+  "form.name": "Your Full Name",
+  "form.email": "Your Email Address",
+  "form.phone": "Your Phone Number",
+  "form.message": "Your Message",
+  "form.button": "Send",
+  "form.successTitle": "Congratulations!",
+  "form.successText": "Your message has been sent successfully. You will be redirected to the homepage in 6 seconds.",
+  "form.errorTitle": "Error!",
+  "form.errorText": "An error occurred while sending your message.",
+
+  "testimonial.title": "Your comments",
+  "testimonial.desc": "What You Say About Us...",
+
+  "ai.desc": "Our artificial intelligence lists the must-see places in the city you enter. From hidden corners to famous venues, all the routes are at your fingertips!",
+  "ai.button": "Bring Places to Visit",
+
+
+
+
+  "footer.company": "Our Company",
+  "footer.about": "About Us",
+  "footer.career": "Careers",
+  "footer.mobileApp": "Mobile App",
+  "footer.contact": "Contact",
+  "footer.call": "Call Us",
+  "footer.whatsapp": "WhatsApp Live",
+  "footer.email": "Send Email",
+  "footer.discoverApp": "Discover Our App",
+
+
+  "footer": "All Rights Reserved | Jadoo Travel"
+
+
+
+
+
+
+
+}
+
+  
+
+  
+
+

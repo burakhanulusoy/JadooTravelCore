@@ -1,0 +1,27 @@
+﻿@model List<ResultSupporterDto>
+
+<div class="position-relative pt-9 pt-lg-8 pb-6 pb-lg-8">
+    <div class="container">
+        <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2 flex-center">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-hover mb-4" style="border-radius:10px;">
+                        <div class="card-body text-center">
+                            <img class="supporter-img" src="@item.SupporterImg" alt="@item.SupporterName" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .supporter-img {
+        width: 120px; /* genişlik */
+        height: 120px; /* yükseklik */
+        object-fit: cover; /* resmi kırp ama bozulma olmasın */
+        border-radius: 10px; /* köşeleri yuvarlatmak istersen */
+    }
+</style>

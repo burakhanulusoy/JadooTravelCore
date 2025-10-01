@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+    @await Component.InvokeAsync("_AdminLayoutComponentPartial")
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        <!--  App Topstrip -->
+        <!-- Sidebar Start -->
+        @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+
+            <div class="body-wrapper-inner">
+                <div class="container-fluid">
+                    <!--  Header Start -->
+                    @await Component.InvokeAsync("_AdminLayoutHeadComponent")
+                    <!--  Header End -->
+                    <!--  Row 1 -->
+                    @RenderBody()
+                 
+                    <div class="py-6 px-6 text-center">
+                        <p class="mb-0 fs-4">
+                            Tasarım ve Geliştirme <a href="https://github.com/burakhanulusoy" target="_blank"
+                                                       class="pe-1 text-primary text-decoration-underline">burakhanulusoy</a> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/js/sidebarmenu.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/js/app.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/js/dashboard.js"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+
+</html>

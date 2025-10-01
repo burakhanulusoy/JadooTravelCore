@@ -1,0 +1,66 @@
+﻿@model CreateTetimonialDto
+@{
+    ViewData["Title"] = "CreateTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- SweetAlert2 kütüphanesi -->
+
+<div class="container">
+    <table class="table table-bordered">
+        <form id="testimonialForm" method="post">
+
+            <label>Yorum Yapan Kişi Adı</label>
+            <input type="text" placeholder="Ad" class="form-control" asp-for="NameSurname" required />
+            <br />
+
+            <label>Yorum Yapan Kişi'nin İşi</label>
+            <input type="text" placeholder="İşi" class="form-control" asp-for="Job" required />
+            <br />
+
+            <label>Mesaj</label>
+            <input type="text" placeholder="Mesajı" class="form-control" asp-for="Message" required />
+            <br />
+
+            <label>Yorum Yapan Kişi'nin Fotoğraf Url'i</label>
+            <input type="url" placeholder="Foto Url" class="form-control" asp-for="ImgUrl" required />
+            <br /><br />
+
+            <button type="button" id="btnSave" class="btn btn-success">
+                Kaydet
+            </button>
+
+        </form>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Eklemek istediğinize emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Ekle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>

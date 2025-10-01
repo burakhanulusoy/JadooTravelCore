@@ -1,0 +1,191 @@
+﻿@model GetDestinationByIdDto
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Rota Detayı";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h2, h5 {
+            color: #1c2541;
+        }
+
+        .premium-title {
+            font-weight: 800;
+            color: #0b132b;
+            border-left: 5px solid #fca311;
+            padding-left: 10px;
+        }
+
+        .btn-reservation {
+            background: linear-gradient(45deg, #1c2541, #3a506b);
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+            .btn-reservation:hover {
+                background: linear-gradient(45deg, #fca311, #e85d04);
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+
+        .contact-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid #fca311;
+            border-radius: 10px;
+        }
+
+            .contact-card h5 {
+                color: #0b132b;
+            }
+
+        .biz-kimiz {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+            .biz-kimiz h5 {
+                color: #1c2541;
+                font-weight: 700;
+            }
+
+        .price-highlight {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e85d04;
+        }
+
+        .info-list dt {
+            font-weight: 600;
+            color: #1c2541;
+        }
+
+        .info-list dd {
+            color: #495057;
+        }
+
+        .list-group-item {
+            border: none;
+            padding-left: 0;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .tour-header {
+            background: #1c2541;
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+
+            .tour-header h2 {
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Sol Alan -->
+            <div class="col-lg-5">
+                <!-- Fotoğraf -->
+                <div class="card shadow border-0 rounded-3 overflow-hidden mb-4">
+                    <img src="@Model.ImgUrl" class="card-img-top img-fluid" alt="Rota Fotoğrafı">
+                </div>
+
+                <!-- İletişim -->
+                <div class="card shadow contact-card p-4 mb-4">
+                    <h5 class="fw-bold mb-3">📞 İletişim</h5>
+                    <p class="mb-2">📱 Telefon: <a href="tel:@Model.Phone" class="text-dark fw-semibold">@Model.Phone</a></p>
+                    <p class="mb-2">💬 WhatsApp: <a href="https://wa.me/@Model.Phone" target="_blank" class="text-success fw-bold">Mesaj Gönder</a></p>
+                    <p class="mb-0">📸 Instagram: <a href="@Model.Instagram" target="_blank" class="text-primary fw-bold">travelagency</a></p>
+                </div>
+
+                <!-- Biz Kimiz -->
+                <div class="biz-kimiz shadow-sm">
+                    <h5 class="fw-bold mb-3">👨‍👩‍👧‍👦 Biz Kimiz?</h5>
+                    <p class="text-secondary">
+                        @Model.WhoAreWe
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sağ Alan -->
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="tour-header">
+                        <h2 class="fw-bold">@Model.City / @Model.Country Turu</h2>
+                        <p class="mb-0">@Model.ShortDescription</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Bilgi Tablosu -->
+                        <dl class="row mb-4 info-list">
+                            <dt class="col-sm-4">Kapasite</dt>
+                            <dd class="col-sm-8">@Model.Capacity Kişi</dd>
+
+                            <dt class="col-sm-4">Ücret</dt>
+                            <dd class="col-sm-8 price-highlight">$@Model.Price</dd>
+
+                            <dt class="col-sm-4">Süre</dt>
+                            <dd class="col-sm-8">@Model.DayNight</dd>
+
+                            <dt class="col-sm-4">Konaklama</dt>
+                            <dd class="col-sm-8">@Model.accomodationPlace</dd>
+
+                            <dt class="col-sm-4">Rota</dt>
+                            <dd class="col-sm-8">@Model.Route</dd>
+                        </dl>
+
+                        <!-- Açıklama -->
+                        <div class="mb-4">
+                            <h5 class="fw-semibold premium-title">📝 Tur Açıklaması</h5>
+                            <p class="text-secondary">@Model.LongDescription</p>
+                        </div>
+
+                        <!-- Seyahat Bilgisi -->
+                        <div class="mb-4">
+                            <h5 class="fw-semibold premium-title">🚌 Seyahat Bilgisi</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">📍 <strong>Gidiş:</strong> @Model.DepatureDate – @Model.DepaturPlace (@Model.DepatureCar + Rehber Eşliğinde)</li>
+                                <li class="list-group-item">📍 <strong>Dönüş:</strong> @Model.ReturnDate – @Model.ReturnPlace</li>
+                                <li class="list-group-item">🍽️ <strong>Dahil Hizmetler:</strong> @Model.Services</li>
+                            </ul>
+                        </div>
+
+                        <!-- Rezervasyon Butonu -->
+                        <div class="d-grid">
+                            <a class="btn btn-lg btn-reservation shadow-sm"
+                               href="https://wa.me/905059860555?text=Merhaba%2C%20tur%20hakk%C4%B1nda%20bilgi%20alabilir%20miyim%3F"
+                               target="_blank">
+                                Rezervasyon Yap
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

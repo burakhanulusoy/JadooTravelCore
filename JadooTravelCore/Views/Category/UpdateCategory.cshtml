@@ -1,0 +1,50 @@
+﻿@model GetCategoryByIdDto
+@{
+    Layout = null;
+}
+
+
+<div class="container">
+
+    <form method="post">
+
+        <input type="hidden" asp-for="CategoryId" class="form-control" />
+
+        <input type="text" asp-for="CategoryName" class="form-control" placeholder="ad" required />
+        <br />
+
+        <input type="text" asp-for="Description" class="form-control" placeholder="açıkalma" required />
+        <br />
+
+        <input type="text" asp-for="IconUrl" class="form-control" placeholder="ıcon url" required />
+        <br />
+
+        <input type="text" asp-for="Status" class="form-control" placeholder="aktiflık" required />
+        <br />
+
+
+        <button class="btn btn-success">Güncelle</button>
+
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+
+
+</div>
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />

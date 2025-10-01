@@ -1,0 +1,35 @@
+﻿@model List<ResultServiceDto>
+@*
+    default category component
+*@
+@{
+    int i = 1;
+}
+<section class="pt-5 pt-md-9" id="service">
+
+    <div class="container">
+        <div class="position-absolute z-index--1 end-0 d-none d-lg-block"><img src="~/public/assets/img/category/shape.svg" style="max-width: 200px" alt="service" /></div>
+        <div class="mb-7 text-center">
+            <h5 class="text-secondary" data-i18n="CategoryTitle">Hizmetlerimiz</h5>
+            <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize" data-i18n="CategorySubtitle">
+                En İyi Hizmetleri Sunuyoruz
+            </h3>
+        </div>
+        <div class="row">
+          @foreach(var item in Model)
+            {
+                <div class="col-lg-3 col-sm-6 mb-6">
+                    <div class="card service-card shadow-hover rounded-3 text-center align-items-center">
+                        <div class="card-body p-xxl-5 p-4">
+                            <img src="@item.CardImgUrl" width="280" height="180" alt="@item.CardTitle" />
+                            <h4 style="margin-top:25px;" class="mb-3" data-i18n="@($"ServiceTitle_{i}")">@item.CardTitle</h4>
+                            <p class="mb-0 fw-medium" data-i18n="@($"ServiceDesc_{i}")">@item.CardDescription</p>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+        </div>
+    </div><!-- end of .container-->
+
+</section>

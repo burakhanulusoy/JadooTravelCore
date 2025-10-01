@@ -1,0 +1,97 @@
+{
+  "services": "Hizmetlerimiz",
+  "locations": "Lokasyonlar",
+  "testimonials": "Yorumlarımız",
+  "more_info": "Daha Fazlası İçin",
+  "login": "Giriş Yap",
+  "get_info": "Bilgi Al",
+  "language": "TR",
+
+  "FeatureTitle": "Seyahat et, keşfet, hayatına değer kat.",
+  "FeatureMainTitle": "Hayallerinizin ötesinde bir dünya keşfedin.",
+  "FeatureDescription": "Uzman ekibimiz ve deneyimli rehberlerimizle, her adımda yanınızdayız. Seyahatinizi unutulmaz kılmak için buradayız.",
+  "FeatureMoreButton": "Daha Fazlası İçin...",
+  "FeatureVideoButton": "Oynat",
+  "FeatureVideoText": "Video İzle",
+
+
+  "CategoryTitle": "Hizmetlerimiz",
+  "CategorySubtitle": "En İyi Hizmetleri Sunuyoruz",
+  "ServiceTitle_1": "Konaklama",
+  "ServiceDesc_1": "İş birliği yaptığımız otellerde konforlu ve merkezi konaklama imkanları.",
+  "ServiceTitle_2": "Tur Rehberi",
+  "ServiceDesc_2": "Deneyimli rehberlerimizle kültürel ve tarihi keşifleriniz zenginleşsin.",
+  "ServiceTitle_3": "Özel Turlar",
+  "ServiceDesc_3": "Online ve telefon ile kolay rezervasyon ve 7/24 destek.",
+  "ServiceTitle_4": "Transfer & Ulaşım Hizmeti",
+  "ServiceDesc_4": "Seyahatinizin her aşamasında konforunuzu ön planda tutuyoruz.",
+
+  "Destination_Subtitle": "En Çok Tercih Edilenler",
+  "Destination_Title": "Popüler Rotalarımız",
+  "Destination_Name1": "Paris, Fransa",
+  "Destination_Day1": "14 Gün 15 Gece",
+  "Destination_Name2": "Roma, İtalya",
+  "Destination_Day2": "9 Gün 10 Gece",
+  "Destination_Name3": "Tokyo, Japonya",
+  "Destination_Day3": "15 Gün 15 Gece",
+  "Destination_Name4": "Barcelona, İspanya",
+  "Destination_Day4": "10 Gün 11 Gece",
+  "Destination_Name5": "Bangkok, Tayland",
+  "Destination_Day5": "14 Gün 15 Gece",
+  "Destination_Name6": "Londra, İngiltere",
+  "Destination_Day6": "9 Gün 10 Gece",
+  "Destination_Name7": "Seul, Güney Kore",
+  "Destination_Day7": "10 Gün 11 Gece",
+  "Destination_Name8": "Mekke, Arabistan",
+  "Destination_Day8": "29 Gün 30 Gece",
+
+
+  "hızlı": "Hızlı Ve Güvenilir",
+  "booking.title": "Bir sonraki seyahatinizi 3 kolay adımda ayırtın.",
+  "booking.step1.title": "Seyehat Ülkenizi Seçin",
+  "booking.step1.desc": "En sevdiğiniz yeri seçin, Dünya'nın neresinde olursa olsun.",
+  "booking.step2.title": "Ödeme Yap",
+  "booking.step2.desc": "Mükemmel yerinizi bulduktan sonra, ödemenizi yapın ve seyahate hazır olun.",
+  "booking.step3.title": "Seçilen Tarihte Havaalanına Ulaşın",
+  "booking.step3.desc": "Birlikte istediğiniz yerde keşfedin, gezin, hayatın tadını çıkartın.",
+
+  "form.title": "💼 Size Özel Teklif Alın",
+  "form.subtitle": "Hayalinizdeki yolculuğa bir adım uzaklıktasınız! İletişim bilgilerinizi ve seyahat tercihlerinizi paylaşın, size özel en uygun fırsatları sunalım.",
+  "form.name": "Adınız ve Soyadınız",
+  "form.email": "Mail Adresiniz",
+  "form.phone": "Telefon Numaranız",
+  "form.message": "Mesajınız",
+  "form.button": "Gönder",
+  "form.successTitle": "Tebrikler!",
+  "form.successText": "Mesajınız başarıyla gönderildi. 6 saniye içinde ana sayfaya yönlendirileceksiniz.",
+  "form.errorTitle": "Hata!",
+  "form.errorText": "Mesajınız gönderilirken bir hata oluştu.",
+
+
+
+
+  "testimonial.title": "Yorumlarınız",
+  "testimonial.desc": "Sizin Hakkımızda Söyledikleriniz...",
+  "ai.desc": "“Yapay zekamız, girdiğiniz şehirde mutlaka görülmesi gereken yerleri sizin için listeliyor. Gizli köşelerden ünlü mekanlara kadar tüm rotalar parmaklarınızın ucunda!”",
+  "ai.button": "Gezilecek Yerleri Getir",
+
+
+
+  "footer.company": "Şirketimiz",
+  "footer.about": "Hakkımızda",
+  "footer.career": "Kariyerimiz",
+  "footer.mobileApp": "Mobil Uygulamamız",
+  "footer.contact": "İletişim",
+  "footer.call": "Arayın",
+  "footer.whatsapp": "Whatsap Canlı",
+  "footer.email": "Mail Atın",
+  "footer.discoverApp": "Uygulamamızı Keşfedin",
+
+
+  "footer": "Tüm Hakları Saklıdır | Jadoo Travel"
+
+
+}
+
+
+

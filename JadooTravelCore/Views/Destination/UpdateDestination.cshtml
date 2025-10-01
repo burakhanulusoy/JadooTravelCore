@@ -1,0 +1,127 @@
+﻿@model GetDestinationByIdDto
+
+
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1> Rota Güncelleme Paneli</h1>
+
+
+
+<div class="container">
+
+    <form method="post" id="testimonialForm">
+
+        <input asp-for="DestinationId" class="form-control"  required type="hidden" />
+
+
+        <label>Şehir Adı</label>
+        <input asp-for="City" class="form-control" placeholder="Şehir" required type="text" />
+        <br />
+        <label>Ülke Adı</label>
+        <input asp-for="Country" class="form-control" placeholder="Ülke" required type="text" />
+        <br />
+        <label>Kısa Açıklama</label>
+        <input asp-for="ShortDescription" class="form-control" placeholder="Kısa Açıklama" required type="text" />
+        <br />
+        <label>Konaklama Yeri</label>
+        <input asp-for="accomodationPlace" class="form-control" placeholder="Konaklama Yeri" required type="text" />
+        <br />
+        <label>Gidiş Tarihi</label>
+        <input asp-for="DepatureDate" class="form-control" placeholder="Gidiş Tarihi" required type="text" />
+        <br />
+        <label>Gidiş Aracı</label>
+        <input asp-for="DepatureCar" class="form-control" placeholder="Gidiş Aracı" required type="text" />
+        <br />
+        <label>Gidiş Yeri</label>
+        <input asp-for="DepaturPlace" class="form-control" placeholder="Gidiş Yeri" required type="text" />
+        <br />
+        <label>Dönüş Tarihi</label>
+        <input asp-for="ReturnDate" class="form-control" placeholder="Dönüş Tarihi" required type="text" />
+        <br />
+        <label>Dönüş Yeri</label>
+        <input asp-for="ReturnPlace" class="form-control" placeholder="Dönüş Yeri" required type="text" />
+        <br />
+        <label>Rotalar</label>
+        <input asp-for="Route" class="form-control" placeholder="Rotalar" required type="text" />
+        <br />
+        <label>$Fiyat$</label>
+        <input asp-for="Price" class="form-control" placeholder="Fiyat(Kdv Dahil)" required type="text" />
+        <br />
+        <label>Şehir Fotoğraf url</label>
+        <input asp-for="ImgUrl" class="form-control" placeholder="Fotoğraf" required type="url" />
+        <br />
+        <label>Gün Gece Sayısı</label>
+        <input asp-for="DayNight" class="form-control" placeholder="Gün Gece Sayısı" required type="text" />
+        <br />
+        <label>Kapasite</label>
+        <input asp-for="Capacity" class="form-control" placeholder="Kapasite" required type="text" />
+        <br />
+        <label>Uzun Açıklama</label>
+        <input asp-for="LongDescription" class="form-control" placeholder="Uzun Açıklama" required type="text" />
+        <br />
+        <label>Hizmetlerimiz</label>
+        <input asp-for="Services" class="form-control" placeholder="Hizmetlerimiz" required type="text" />
+        <br />
+        <label>Telefon Numarası</label>
+        <input asp-for="Phone" class="form-control" placeholder="Telefon Numarası" required type="tel" />
+        <br />
+        <label>Instagram Link</label>
+        <input asp-for="Instagram" class="form-control" placeholder="Instagram Linki" required type="url" />
+        <br />
+        <label>Biz Kimiz</label>
+        <input asp-for="WhoAreWe" class="form-control" placeholder="Biz Kimiz" required type="text" />
+        <br />
+        <label>Aktif Mi?</label>
+        <input asp-for="Status" class="form-control" placeholder="Aktif Mi?" required type="text" />
+        <br />
+        <br />
+        <br />
+        <span class="form-control">@Html.ValidationSummary()</span>
+
+        <button class="btn btn-success" id="btnSave" type="button">Güncelle</button>
+
+
+
+
+    </form>
+
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Emin misiniz?",
+            text: "Güncellemek istediğinize emin misiniz?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Güncelle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>

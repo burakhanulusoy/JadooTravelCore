@@ -1,0 +1,76 @@
+﻿@model GetByIdServiceDto
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Servis Güncelleme Ekranı</h1>
+
+
+<div class="container">
+
+    <form method="post" id="testimonialForm">
+
+        <input asp-for="ServiceId"  required type="hidden"  />
+
+
+        <label>Kart Başlığı</label>
+        <input asp-for="CardTitle" class="form-control" required type="text" placeholder="Kart Başlığı" />
+        <br />
+        <label>Kart Açıklaması</label>
+        <input asp-for="CardDescription" class="form-control" required type="text" placeholder="Kart Açıklamsı" />
+        <br />
+        <label>Kart Fotoğraf Url'i</label>
+        <input asp-for="CardImgUrl" class="form-control" required type="url" placeholder="Kart Fotoğraf Url'i" />
+        <br />
+
+        <button class="btn btn-info" id="btnSave" type="button">Güncelle</button>
+
+    </form>
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Güncellemek istediğinize emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Güncelle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>
+
+
+
+
+
+

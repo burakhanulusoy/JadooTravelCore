@@ -1,0 +1,59 @@
+﻿@model GetByIdReceiverMessageDto
+@{
+    ViewData["Title"] = "DeatilMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-3">
+        <!-- Header -->
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">📩 Mesaj Detayı</h5>
+            <div>
+                <a href="javascript:void(0)" class="text-white me-3" title="Favorilere Ekle">
+                    <i class="ti ti-star fs-5"></i>
+                </a>
+                <a href="javascript:void(0)" class="text-white me-3" title="Önemli İşaretle">
+                    <i class="ti ti-alert-circle fs-5"></i>
+                </a>
+                <a href="javascript:void(0)" class="text-white" title="Sil">
+                    <i class="ti ti-trash fs-5"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+            <div class="d-flex align-items-center mb-4">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=100&auto=format&fit=crop&q=60"
+                     alt="user" width="60" height="60" class="rounded-circle shadow-sm me-3">
+                <div>
+                    <h5 class="mb-1 fw-bold">@Model.NameSurname</h5>
+                    <p class="mb-0 text-muted">@Model.Email</p>
+                </div>
+                <div class="ms-auto">
+                    @if (Model.Status == true)
+                    {
+                        <span class="badge bg-success px-3 py-2">✔ Okundu</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger px-3 py-2">❌ Okunmadı</span>
+                    }
+                </div>
+            </div>
+
+            <hr />
+
+            <p class="text-muted mb-2"><strong>📅 Gönderim Tarihi:</strong> @Model.ReceiverDate.ToShortDateString()</p>
+            <p class="text-muted mb-2"><strong>📞 Telefon:</strong> @Model.PhoneNumber</p>
+
+            <!-- Mesaj Balonu -->
+            <div class="p-3 bg-light rounded-3 shadow-sm mt-3">
+                <p class="mb-0 text-dark" style="white-space: pre-line;">
+                    @Model.Message
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

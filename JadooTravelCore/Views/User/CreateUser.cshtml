@@ -1,0 +1,75 @@
+﻿@model CreateUserDto
+
+
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h1>Kullanıcı Kaydet</h1>
+<div class="container">
+
+    <form method="post" id="testimonialForm">
+
+        <br />
+        <input class="form-control" asp-for="UserName" required type="text" placeholder="Kullanıcı Adı" />
+        <br />
+        <input class="form-control" asp-for="UserPassword" required type="password" placeholder="Kullanıcı Şifresi" />
+        <br />
+        <br />
+        <input class="form-control" asp-for="Email" required type="email" placeholder="Kullanıcı Email-i" />
+        <br />
+        <input class="form-control" asp-for="Phone" required type="tel" placeholder="Kullanıcı Telefon Numarası" />
+        <br />
+        <input class="form-control" asp-for="ImgUrl" required type="url" placeholder="Kullanıcı Fotosu" />
+        <br />
+        <input class="form-control" asp-for="Mission" required type="text" placeholder="Kullanıcı Görevi" />
+        <br />
+        <input class="form-control" asp-for="City" required type="text" placeholder="Kullanıcı Şehri" />
+
+ <br />
+ <br />
+ <br />
+        <button class="btn btn-success" id="btnSave" type="button"> Kaydet</button>
+
+
+
+    </form>
+
+
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    document.getElementById("btnSave").addEventListener("click", function (e) {
+        const form = document.getElementById("testimonialForm");
+
+        // Form geçerli mi kontrol et
+        if (!form.checkValidity()) {
+            form.reportValidity(); // Uyarıları göster
+            return; // SweetAlert açılmaz
+        }
+
+        Swal.fire({
+            title: "Eklemek istediğinize emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#28a745",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet,Ekle!",
+            cancelButtonText: "Vazgeç"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+
+</script>

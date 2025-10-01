@@ -1,0 +1,84 @@
+﻿@model List<ResultUserDto>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+
+
+<div class="card" ">
+    <div class="card-body">
+        <h4 class="card-title mb-4 pb-2">Tüm Adminler Listesi</h4>
+        <a href="/User/CreateUser" class="btn btn-success">Yeni Admin Ekle</a>
+        <div class="table-responsive pb-4" style="margin-top:30px;>
+            <div id="all-student_wrapper" class="dataTables_wrapper no-footer">
+               
+                    <table id="all-student" class="table table-striped table-bordered border text-nowrap align-middle dataTable no-footer" aria-describedby="all-student_info">
+                    <thead>
+                        <!-- start row -->
+                        <tr><th class="sorting sorting_asc" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Profile: activate to sort column descending" style="width: 229.953px;">Profil</th><th class="sorting" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-label="Sec.: activate to sort column ascending" style="width: 57.7344px;">Şehir</th><th class="sorting" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-label="Subject: activate to sort column ascending" style="width: 102.453px;">Telefon Numarası</th><th class="sorting" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-label="D.O.B.: activate to sort column ascending" style="width: 115.016px;">Email-Hesabı</th><th class="sorting" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 130px;">Güncelle</th><th class="sorting" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 276.562px;">Sil</th><th class="sorting" tabindex="0" aria-controls="all-student" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="width: 28.2812px;"></th></tr>
+                        <!-- end row -->
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="even">
+                                <td class="sorting_1 sorting_2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-3">
+                                            <img src="@item.ImgUrl" class="rounded-circle" width="45">
+                                        </div>
+
+                                        <div>
+                                            <h6 class="mb-1">@item.UserName</h6>
+                                            <p class="fs-3 mb-0">@item.Mission </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@item.City</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td><a href="/User/UpdateUser/@item.UserId" class="btn btn-primary">Güncelle</a></td>
+                                <td><a href="/User/DeleteUser/@item.UserId" class="btn btn-danger">Sil</a></td>
+
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-danger').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault(); // normal linkin çalışmasını durdur
+                    const url = this.href;
+
+                    Swal.fire({
+                        title: 'Emin misiniz?',
+                        text: "Bu işlemi geri alamazsınız!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Evet, sil!',
+                        cancelButtonText: 'Hayır'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

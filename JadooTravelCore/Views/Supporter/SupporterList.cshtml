@@ -1,0 +1,84 @@
+﻿@model List<ResultSupporterDto>
+@{
+    ViewData["Title"] = "SupporterList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center text-primary fw-bold">✨ Tüm Sponsorlarımız</h2>
+
+    <table class="table table-striped table-hover align-middle shadow-sm rounded">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Sponsor Adı</th>
+                <th>Sponsor Görseli</th>
+                <th class="text-center">Sil</th>
+                <th class="text-center">Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@item.SupporterName</td>
+                    <td>
+                        <img src="@item.SupporterImg" alt="@item.SupporterName"
+                             style="width:100px; height:auto; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.2);" />
+                    </td>
+                    <td class="text-center">
+                        <a href="/Supporter/DeleteSupporter/@item.SupporterId"
+                           class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i> Sil
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a href="/Supporter/UpdateSupporter/@item.SupporterId"
+                           class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil-square"></i> Güncelle
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-end mt-3">
+        <a href="/Supporter/CreateSupporter" class="btn btn-success btn-lg">
+            + Yeni Sponsor Ekle
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-outline-danger').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.href;
+
+                    Swal.fire({
+                        title: 'Silmek istediğinize emin misiniz?',
+                        text: "Bu işlemi geri alamazsınız!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Evet, sil!',
+                        cancelButtonText: 'Hayır'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">

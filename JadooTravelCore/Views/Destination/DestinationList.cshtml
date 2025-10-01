@@ -1,0 +1,104 @@
+﻿@model List<ResultDestinationDto>
+@{
+    ViewData["Title"] = "DestinationList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">
+            Aktif Rotalarımız <span class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2">@ViewBag.DestinationCount</span>
+            <br />
+            <br />
+            <a href="/Destination/CreateDestination" class="btn btn-success">Yeni Rota Ekle</a>
+
+        </h3>
+       
+    </div>
+    <div class="row">
+        @foreach(var item in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card overflow-hidden">
+                    <div class="el-card-item">
+                        <div class="el-card-avatar el-overlay-1 w-100 overflow-hidden position-relative">
+                            <a class="image-popup-vertical-fit" href="/InfoDestination/Index/@item.DestinationId">
+                                <img src="@item.ImgUrl" class="d-block position-relative w-100 w-100 object-fit-cover" height="220" alt="user">
+                            </a>
+                            <div class="p-4 d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6 class="mb-0 fs-4 fw-semibold">@item.City/@item.Country</h6>
+                                    <span class="text-dark fs-2">@item.DayNight</span>
+                                    @if(item.Status==true)
+                                    {
+                                        <span class="text-dark fs-2">AKTİF</span>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="text-dark fs-2">AKTİF Değil</span>
+                                    }
+                                    <a href="/Destination/DeleteDestination/@item.DestinationId" class="btn btn-danger">Sil</a>
+                                    <a href="/Destination/UpdateDestination/@item.DestinationId" class="btn btn-primary">Güncelle</a>
+
+
+                                </div>
+                                <div class="dropdown">
+                                    <a class="text-muted fw-semibold d-flex align-items-center p-1 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu overflow-hidden">
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0)">
+                                               @item.Price$
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+
+    </div>
+</div>
+
+
+
+
+                                            @section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-danger').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault(); // normal linkin çalışmasını durdur
+                    const url = this.href;
+
+                    Swal.fire({
+                        title: 'Emin misiniz?',
+                        text: "Bu işlemi geri alamazsınız!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Evet, sil!',
+                        cancelButtonText: 'Hayır'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

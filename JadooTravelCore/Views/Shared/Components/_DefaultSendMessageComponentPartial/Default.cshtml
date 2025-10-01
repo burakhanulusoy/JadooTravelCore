@@ -1,0 +1,47 @@
+﻿
+@*
+    send message component partial
+*@<section class="pt-6">
+    <div class="container">
+        <div class="py-8 px-5 position-relative text-center" style="background-color: rgba(223, 215, 249, 0.15);border-radius: 30px;">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+
+                    <h2 data-i18n="ai.desc" class="text-secondary lh-1-7 mb-4">
+                        “Yapay zekamız, girdiğiniz şehirde mutlaka görülmesi gereken yerleri sizin için listeliyor. Gizli köşelerden ünlü mekanlara kadar tüm rotalar parmaklarınızın ucunda!”
+                    </h2>
+
+                    <!-- AI Form Panel -->
+                    <div class="card shadow-sm p-4 mb-4">
+                        <form asp-controller="Ai" asp-action="Index" method="post" class="d-flex gap-2 flex-column flex-sm-row">
+                            <input class="form-control" type="text" name="city" placeholder="Şehir giriniz" required />
+                            <button data-i18n="ai.button" formtarget="_blank" type="submit" class="btn btn-primary flex-shrink-0">Gezilecek Yerleri Getir</button>
+                        </form>
+                    </div>
+
+                    <!-- AI Sonuç Panel -->
+                    @if (ViewBag.ResultList != null)
+                    {
+                        <div class="card shadow-sm p-4 mt-3">
+                            <h4 class="text-dark mb-3">Gezilecek Yerler:</h4>
+                            <ol class="list-group list-group-numbered">
+                                @foreach (var item in ViewBag.ResultList)
+                                {
+                                    <li class="list-group-item">@item</li>
+                                }
+                            </ol>
+                        </div>
+                    }
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

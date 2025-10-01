@@ -1,0 +1,294 @@
+﻿@{
+    ViewData["Title"] = "Jadoo AI Şehir Rehberi";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ai-bg: #0d0d0d;
+            --card-bg: rgba(25,25,25,0.85);
+            --primary: #FF6B35;
+            --accent: #FFA62E;
+            --text-light: #f0f0f0;
+            --shadow: rgba(255,107,53,0.4);
+            --neon-glow: 0 0 8px #FF6B35, 0 0 15px #FFA62E;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--ai-bg);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+            .header-section .logo {
+                font-size: 4rem;
+                color: var(--primary);
+                text-shadow: var(--neon-glow);
+                margin-bottom: 1rem;
+            }
+
+            .header-section .app-title {
+                font-family: 'Orbitron', sans-serif;
+                font-weight: 700;
+                font-size: 3rem;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+                text-shadow: var(--neon-glow);
+            }
+
+            .header-section .app-subtitle {
+                font-size: 1.2rem;
+                color: #d0d0d0;
+                margin: 0 auto;
+                max-width: 700px;
+                line-height: 1.5;
+            }
+
+        .card-main, .result-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px var(--shadow);
+            border: none;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+            .card-main:hover, .result-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px var(--shadow);
+            }
+
+        .card-header {
+            background: linear-gradient(90deg, #FF6B35, #FFA62E);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: none;
+        }
+
+            .card-header h3 {
+                margin: 0;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .form-control {
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            background: #1e1e1e;
+            color: var(--text-light);
+        }
+
+            .form-control::placeholder {
+                color: #aaa;
+            }
+
+            .form-control:focus {
+                box-shadow: 0 0 12px var(--primary);
+                outline: none;
+            }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #FF6B35, #FFA62E);
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--neon-glow);
+            transition: all 0.3s;
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px var(--primary), 0 0 30px var(--accent);
+            }
+
+        .places-list {
+            padding: 0;
+            margin: 0;
+        }
+
+        .place-item {
+            padding: 1.8rem;
+            border-bottom: 1px solid #333;
+            transition: all 0.3s;
+        }
+
+            .place-item:last-child {
+                border-bottom: none;
+            }
+
+            .place-item:hover {
+                background: rgba(255,107,53,0.1);
+                transform: translateX(10px);
+            }
+
+        .place-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .place-desc {
+            color: #ccc;
+            line-height: 1.6;
+            padding-left: 2rem;
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        .alert-danger {
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: rgba(220,53,69,0.1);
+            color: #dc3545;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+            .loading-spinner .spinner-border {
+                width: 4rem;
+                height: 4rem;
+                color: var(--primary);
+                box-shadow: var(--neon-glow);
+            }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header-section">
+            <div class="logo"><i class="fas fa-robot"></i></div>
+            <h1 class="app-title">Jadoo AI Şehir Rehberi</h1>
+            <p class="app-subtitle">Şehrinizi girin, AI sizin için gezilecek yerleri ve açıklamalarını hemen listelesin. Keşfetmeye hazır mısınız?</p>
+        </div>
+
+        <!-- Form Kartı -->
+        <div class="card card-main">
+            <div class="card-header">
+                <h3><i class="fas fa-search-location"></i> Şehir Keşfi Başlat</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" id="cityForm" class="row g-3 align-items-center">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-text" style="background:#1e1e1e; border:none; color:#FF6B35;">
+                                <i class="fas fa-city"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" name="city" placeholder="Şehir adı giriniz..." required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary w-100 py-3" id="submitBtn">
+                            <i class="fas fa-map-marker-alt me-2"></i> Yerleri Keşfet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner-border" role="status"><span class="visually-hidden">Yükleniyor...</span></div>
+            <p>AI şehrinizi analiz ediyor, lütfen bekleyin...</p>
+        </div>
+
+        <!-- Sonuç Kartı -->
+        @if (ViewBag.ResultList != null)
+        {
+            <div class="card result-card">
+                <div class="card-header">
+                    <h4><i class="fas fa-list-ul"></i> @ViewBag.City Şehrinde Gezilecek Yerler</h4>
+                </div>
+                <div class="card-body p-0">
+                    <div class="places-list">
+                        @foreach (var item in ViewBag.ResultList)
+                        {
+                            var splitIndex = item.IndexOf(" ");
+                            string title = item;
+                            string desc = "";
+                            if (splitIndex > 0)
+                            {
+                                title = item.Substring(0, splitIndex);
+                                desc = item.Substring(splitIndex).Trim();
+                            }
+
+                            <div class="place-item">
+                                <div class="place-title"><i class="fas fa-map-pin"></i> @title</div>
+                                @if (!string.IsNullOrEmpty(desc))
+                                {
+                                    <div class="place-desc">@desc</div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        <!-- Hata Mesajı -->
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger mt-4 shadow-sm">
+                <i class="fas fa-exclamation-triangle me-2"></i> @ViewBag.Error
+            </div>
+        }
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('cityForm').addEventListener('submit', function(){
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('loadingSpinner').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "FeatureList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1 class="mb-4 text-dark">Giriş Kısmı Yönetimi</h1>
+
+<div class="container">
+
+    <table class="table table-hover align-middle text-center shadow-sm rounded-3" style="background-color:#f9f9f9;">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Başlık</th>
+                <th>Ana Yazı</th>
+                <th>Alt Açıklama</th>
+                <th>Youtube Video Linki</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th>@count</th>
+                    <td class="fw-bold text-primary">@item.Title</td>
+                    <td>@item.MainTitle</td>
+                    <td class="text-secondary">@item.Description</td>
+                    <td>
+                        <a href="@item.VideoUrl" target="_blank" class="text-decoration-none text-info">
+                            Video Linki
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/Feature/DeleteFeature/@item.FeatureId" class="btn btn-outline-danger btn-sm delete-btn">
+                            <i class="ti ti-trash"></i> Sil
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/Feature/UpdateFeature/@item.FeatureId" class="btn btn-outline-primary btn-sm">
+                            <i class="ti ti-pencil"></i> Güncelle
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Feature/CreateFeature" class="btn btn-success mt-3 shadow-sm">
+        <i class="ti ti-plus"></i> Yeni Giriş Kısmı Ekle
+    </a>
+
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.href;
+
+                    Swal.fire({
+                        title: 'Emin misiniz?',
+                        text: "Bu işlemi geri alamazsınız!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Evet, sil!',
+                        cancelButtonText: 'Hayır'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

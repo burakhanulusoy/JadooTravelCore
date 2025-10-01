@@ -9,6 +9,7 @@ namespace JadooTravelCore.Controllers
     [AllowAnonymous]
     public class AiController : Controller
     {
+        
         private readonly string myapikey = "YOUR APIKEY";
         [HttpGet]
         public IActionResult Index()
@@ -18,6 +19,8 @@ namespace JadooTravelCore.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string city)
         {
+            var dd = 0;
+
             if (string.IsNullOrEmpty(city))
             {
                 ViewBag.Error = "Lütfen bir şehir giriniz!";

@@ -20,6 +20,7 @@ namespace JadooTravelCore.Controllers
         public async Task<IActionResult> Index(string city)
         {
             var dd = 0;
+            var dde = 0;
 
             if (string.IsNullOrEmpty(city))
             {
